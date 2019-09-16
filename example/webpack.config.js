@@ -16,7 +16,7 @@ module.exports = {
             }
           },
           {
-            loader: require.resolve('react-refresh-loader')
+            loader: 'react-refresh-loader'
           }
         ]
       }

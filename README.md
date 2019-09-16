@@ -55,7 +55,7 @@ module.exports = {
           }
         },
         {
-          loader:require('react-refresh-loader')
+          loader: 'react-refresh-loader'
         }
         ]
       }
