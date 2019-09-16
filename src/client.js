@@ -38,6 +38,4 @@ export function registerRefresh(m, type, id) {
   Refresh.register(type, fullId);
 }
 
-export function $RefreshSig$() {
-  return Refresh.createSignatureFunctionForTransform()
-}
+export const $RefreshSig$ = Refresh.createSignatureFunctionForTransform;

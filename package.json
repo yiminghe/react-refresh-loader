@@ -1,6 +1,6 @@
 {
   "name": "react-refresh-loader",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "src/index.js",
   "license": "MIT",
   "homepage": "http://github.com/yiminghe/react-refresh-loader",
