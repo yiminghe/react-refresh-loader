@@ -1,0 +1,22 @@
+{
+  "name": "react-refresh-loader",
+  "version": "0.1.5",
+  "main": "src/index.js",
+  "license": "MIT",
+  "homepage": "http://github.com/yiminghe/react-refresh-loader",
+  "author": "yiminghe@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yiminghe/react-refresh-loader.git"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "pub": "npm publish &&  git push"
+  },
+  "devDependencies": {
+    "react-refresh": "^0.4.2",
+    "source-map": "^0.7.3"
+  }
+}
