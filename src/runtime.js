@@ -1,7 +1,17 @@
 import Refresh from 'react-refresh/runtime';
 
-function isReactRefreshBoundary(moduleExports) {
+function registerClasses(classes, m) {
+  classes.forEach((cls) => {
+    if (cls.prototype.isReactComponent) {
+      registerRefresh(m, cls, cls.displayName || cls.name)
+    }
+  })
+}
+
+function processReactRefreshBoundary(m) {
+  var moduleExports = m.exports || m.__proto__.exports;
   if (Refresh.isLikelyComponentType(moduleExports)) {
+    registerClasses([ moduleExports ], m);
     return true;
   }
   if (moduleExports == null || typeof moduleExports !== 'object') {
@@ -10,6 +20,7 @@ function isReactRefreshBoundary(moduleExports) {
   }
   let hasExports = false;
   let areAllExportsComponents = true;
+  let classes = [];
   for (const key in moduleExports) {
     hasExports = true;
     if (key === '__esModule') {
@@ -18,14 +29,20 @@ function isReactRefreshBoundary(moduleExports) {
     const exportValue = moduleExports[key];
     if (!Refresh.isLikelyComponentType(exportValue)) {
       areAllExportsComponents = false;
+    } else {
+      classes.push(exportValue);
     }
   }
-  return hasExports && areAllExportsComponents;
+  const ret = hasExports && areAllExportsComponents;
+  if (ret) {
+    registerClasses(classes, m);
+  }
+  return ret;
 }
 
 
 export function checkRefresh(m) {
-  if (isReactRefreshBoundary(m.exports || m.__proto__.exports)) {
+  if (processReactRefreshBoundary(m)) {
     m.hot.accept();
     setTimeout(function () {
       Refresh.performReactRefresh()

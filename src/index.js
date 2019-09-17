@@ -1,6 +1,6 @@
 module.exports = function (source) {
   const prefix = `
-	import {checkRefresh, $RefreshSig$, registerRefresh} from "${require.resolve('./client')}";
+	import {checkRefresh, $RefreshSig$, registerRefresh} from "${require.resolve('./runtime')}";
 	function $RefreshReg$(type, id) {
 	  registerRefresh(module,type,id);
 	}
