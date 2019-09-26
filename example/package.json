@@ -17,7 +17,7 @@
     "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --mode development",
+    "start": "cp -R ../src/ node_modules/react-refresh-loader/src && webpack-dev-server --hot --mode development",
     "build": "webpack --mode production"
   }
 }

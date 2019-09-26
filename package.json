@@ -1,6 +1,6 @@
 {
   "name": "react-refresh-loader",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "src/index.js",
   "license": "MIT",
   "homepage": "http://github.com/yiminghe/react-refresh-loader",
@@ -18,5 +18,8 @@
   "devDependencies": {
     "react-refresh": "^0.4.2",
     "source-map": "^0.7.3"
+  },
+  "dependencies": {
+    "magic-string": "^0.25.3"
   }
 }
