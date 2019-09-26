@@ -1,4 +1,4 @@
-const MagicString = require('magic-string');
+const MagicString = require('magic-string-fix');
 
 module.exports = function (source) {
   const prefix = `
@@ -14,8 +14,7 @@ module.exports = function (source) {
   const path = this.resourcePath.slice(0);
   const newMap = s.generateMap({
     source: path,
-    includeContent: true,
-    hires: true
+    includeContent: true
   });
   this.callback(null, s.toString(), newMap);
 };
