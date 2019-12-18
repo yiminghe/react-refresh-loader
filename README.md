@@ -27,18 +27,10 @@ checkout [example](./example)
 
 ## usage
 
-entry js:
-
-```js
-if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
-  require("react-refresh/runtime").injectIntoGlobalHook(window);
-}
-require("./app");
-```
-
 webpack config:
 
 ```js
+const ReactRefreshLoader = require('react-refresh-loader');
 module.exports = {
 	module: {
     rules: [
@@ -55,11 +47,22 @@ module.exports = {
           }
         },
         {
-          loader: 'react-refresh-loader'
+          loader: ReactRefreshLoader.path(),
         }
         ]
       }
     ]
   },
+  plugins: [
+    new ReactRefreshLoader.Plugin(),
+  ]
 }
 ```
+
+## history
+
+### 0.2.0 / 2019-12-17
+- add plugin
+
+### 0.1.0
+- add loader

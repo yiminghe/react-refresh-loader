@@ -1,6 +1,7 @@
 const MagicString = require('magic-string-fix');
+const Plugin = require('./plugin');
 
-module.exports = function (source) {
+const loader = module.exports = function (source) {
   const prefix = `
 	import {checkRefresh, $RefreshSig$, registerRefresh} from "${require.resolve('./runtime')}";
 	function $RefreshReg$(type, id) {
@@ -19,3 +20,8 @@ module.exports = function (source) {
   this.callback(null, s.toString(), newMap);
 };
 
+loader.Plugin = Plugin;
+
+loader.path = function () {
+  return require.resolve('react-refresh-loader');
+};

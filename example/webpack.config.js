@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ReactRefreshLoader = require('react-refresh-loader');
 
 module.exports = {
   devtool: 'source-map',
@@ -12,11 +13,11 @@ module.exports = {
             loader: "babel-loader",
             options: {
               presets: [ "@babel/preset-env", "@babel/preset-react" ],
-              plugins: [ require("react-refresh/babel"),'@babel/plugin-proposal-class-properties' ]
+              plugins: [ require("react-refresh/babel"), '@babel/plugin-proposal-class-properties' ]
             }
           },
           {
-            loader: 'react-refresh-loader'
+            loader: ReactRefreshLoader.path()
           }
         ]
       }
@@ -26,6 +27,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })
+    }),
+    new ReactRefreshLoader.Plugin(),
   ]
 };
